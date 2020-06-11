@@ -1,0 +1,18 @@
+---
+
+- name: copy autentication files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ deployment_dir }}"
+  with_items:
+    - "htpass-file"
+    - "htpasswd-cr.yaml"
+
+- name: ocp login
+  command: "oc login -u {{ admin_user }} -p {{ admin_user_password }}"
+
+- name: creating the htpasswd secret
+  command: "oc create secret generic htpass-secret --from-file=htpasswd={{ deployment_dir }}/htpass-file -n openshift-config"
+
+- name: adding an identity provider to cluster
+  command: "oc apply -f {{ deployment_dir }}/htpasswd-cr.yaml"

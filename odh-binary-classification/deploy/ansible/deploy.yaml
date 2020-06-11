@@ -1,0 +1,11 @@
+---
+
+- name: configure os (raspberry pi)
+  hosts: raspberry3
+  vars_files:
+    - "group_vars/general.yaml"
+    - "group_vars/kafka.yml"
+  gather_facts: false
+  roles:
+    - general
+    - authentication

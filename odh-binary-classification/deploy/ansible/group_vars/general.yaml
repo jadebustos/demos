@@ -1,0 +1,8 @@
+---
+
+# directory where all required files will be copied
+deployment_dir: '/home/bastion_user/demo-ocp'
+
+# ocp cluster admin user
+admin_user: 'kubeadmin'
+admin_user_password: 'password'

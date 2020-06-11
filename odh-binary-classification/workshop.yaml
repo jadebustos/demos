@@ -1,0 +1,18 @@
+--- 
+name: "Machine Learning in OpenShift"
+authors: 
+  - 
+    name: "Jose Angel de Bustos Perez"
+    email: jadebustos@redhat.com
+duration: "120 minutes"
+keywords: 
+  - OpenShift
+  - OCS
+  - Kafka
+  - Opendatahub
+  - "machine learning"
+  - AI
+  - Jupyter
+  - Python
+  - seldom
+repo: "https://github.com/jadebustos/demos/odh-binary-classification"
