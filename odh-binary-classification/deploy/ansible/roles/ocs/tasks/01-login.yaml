@@ -7,4 +7,4 @@
     state: present
 
 - name: ocp login
-  command: "oc login --insecure-skip-tls-verify=true -u {{ admin_user }} -p {{ admin_user_password }}"
+  command: "oc login -  -insecure-skip-tls-verify=true -u {{ admin_user }} -p {{ admin_user_password }}"
