@@ -1,8 +1,16 @@
 ---
 
 # directory where all required files will be copied
-deployment_dir: '/home/bastion_user/demo-ocp'
+deployment_dir: '/home/abustosp-redhat.com/demo-ocp'
 
 # ocp cluster admin user
-admin_user: 'kubeadmin'
-admin_user_password: 'password'
+admin_user: 'opentlc-mgr'
+admin_user_password: 'r3dh4t1!'
+
+# data scientist user
+ds_user: 'data_scientist'
+ds_user_password: 'r3dh4t1!'
+
+# production user
+pr_user: 'production'
+pr_user_password: 'r3dh4t1!'

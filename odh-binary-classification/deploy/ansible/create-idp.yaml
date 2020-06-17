@@ -1,10 +1,10 @@
 ---
 
-- name: configure os (raspberry pi)
-  hosts: raspberry3
+- name: binary classification demo deployment
+  hosts: bastion
   vars_files:
     - "group_vars/general.yaml"
-    - "group_vars/kafka.yml"
+    - "group_vars/project.yaml"
   gather_facts: false
   roles:
     - general
