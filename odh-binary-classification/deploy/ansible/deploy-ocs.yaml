@@ -1,0 +1,9 @@
+---
+
+- name: ocs deployment
+  hosts: bastion
+  vars_files:
+    - "group_vars/general.yaml"
+  gather_facts: false
+  roles:
+    - ocs

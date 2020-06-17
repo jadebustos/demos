@@ -1,0 +1,9 @@
+---
+
+- name: create ocs namespace
+  command: oc create namespace openshift-storage
+
+- name: label ocs namespace
+  command: oc label namespace openshift-storage openshift.io/cluster-monitoring=true
+
+#- name: install ocs operator

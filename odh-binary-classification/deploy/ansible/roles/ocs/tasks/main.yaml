@@ -1,0 +1,4 @@
+---
+
+- include_tasks: 01-login.yaml
+- include_tasks: 02-install-ocs.yaml
