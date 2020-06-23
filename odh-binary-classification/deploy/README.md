@@ -239,5 +239,5 @@ You can use the [upload-data.sh](../source/data/upload-data.sh) script to create
  We need to create a kafka topic to send images to be predicted using the model:
 
  ```
- [user@yourhost ansible]$
+ [user@yourhost ansible]$ ansible-playbook -i inventory create-topic.yaml
  ```

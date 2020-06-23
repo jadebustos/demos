@@ -1,0 +1,9 @@
+---
+
+- name: create kafka topic
+  hosts: bastion
+  vars_files:
+    - "group_vars/kafka.yaml"
+  gather_facts: false
+  roles:
+    - kafka

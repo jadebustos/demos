@@ -4,7 +4,19 @@ authors:
   - 
     name: "Jose Angel de Bustos Perez"
     email: jadebustos@redhat.com
-duration: "120 minutes"
+  - 
+    name: "Raúl Sevilla Canavate"
+    email: rsevilla@redhat.com
+  - 
+    name: "José Antonio Gonzalez Prada"
+    email: josgonza@redhat.com
+  - 
+    name: "David Pascual Berrocal"
+    email: dpascual@redhat.com
+  - 
+    name: "Daniel Dominguez Cuadrado"
+    email: dani@redhat.com
+duration: "60 minutes"
 keywords: 
   - OpenShift
   - OCS
@@ -14,5 +26,5 @@ keywords:
   - AI
   - Jupyter
   - Python
-  - seldom
+  - Ceph (OCS)
 repo: "https://github.com/jadebustos/demos/odh-binary-classification"
