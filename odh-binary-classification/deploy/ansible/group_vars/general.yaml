@@ -1,16 +1,16 @@
 ---
 
 # directory where all required files will be copied
-deployment_dir: '/home/abustosp-redhat.com/demo-ocp'
+deployment_dir: '/home/youruser/demo-ocp'
 
 # ocp cluster admin user
-admin_user: 'opentlc-mgr'
-admin_user_password: 'r3dh4t1!'
+admin_user: 'kubeadmin'
+admin_user_password: 'temporal2020'
 
 # data scientist user
 ds_user: 'data_scientist'
-ds_user_password: 'r3dh4t1!'
+ds_user_password: 'temporal2020'
 
 # production user
 pr_user: 'production'
-pr_user_password: 'r3dh4t1!'
+pr_user_password: 'temporal2020'

@@ -1,0 +1,13 @@
+---
+
+- name: create binary classification project
+  command: oc new-project binary-classification --description="Binary classification research" --display-name="Binary classification"
+
+#- name: create production project
+#  command: oc new-project prod-app --description="Production application" --display-name="Application"
+
+- name: add admin role to binary classification project
+  command: oc adm policy add-role-to-user admin data_scientist -n binary-classification
+
+#- name: add admin role to production project
+#  command: oc adm policy add-role-to-user admin production -n prod-app

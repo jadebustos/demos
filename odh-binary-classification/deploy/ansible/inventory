@@ -1,2 +1,2 @@
 [bastion]
-192.168.100.15 ansible_user=jadebustos
+bastion ansible_user=your-user
