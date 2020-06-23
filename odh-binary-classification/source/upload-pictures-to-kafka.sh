@@ -7,6 +7,9 @@ TOPIC=predict
 # directory to read pictures to be send to kafka topic
 DIR=data/predict
 
+rm -Rf $DIR
+mkdir -p $DIR
+
 for item in $(ls $DIR/*.jpg)
 do
   echo "Uploading "$item" to topic "$TOPIC

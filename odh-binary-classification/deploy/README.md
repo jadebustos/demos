@@ -233,3 +233,11 @@ No we need to upload data to S3.
 You can use the [upload-data.sh](../source/data/upload-data.sh) script to create the buckets and upload the data to the buckets.
 
 > Remember to configure the [s3cfg.cfg](../source/data/s3cfg.cfg) according to your deployment.
+
+ ## Create kafka topic
+
+ We need to create a kafka topic to send images to be predicted using the model:
+
+ ```
+ [user@yourhost ansible]$
+ ```
