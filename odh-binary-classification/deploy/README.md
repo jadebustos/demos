@@ -153,3 +153,73 @@ Pod         cpu       -    16    -
 
 ## Create S3 buckets
 
+Now we need to create the following buckets:
+
+* **train-cat** we will upload the cat images to train the model.
+* **train-dog** we will upload de dog images to train the model.
+* **validation-cat** we will upload the cat images to validate the model during training.
+* **validation-dog** we will upload the dog images to validate the model during training.
+* **test-cat** we will upload the cat images to test the model after training.
+* **test-dog** we will upload the dog images to test the model after training.
+* **models** we will upload the model to be consumed for more applications.
+
+We need to install the **s3cmd** utility in some server. It could be the bastion host.
+
+We need to get the data for the S3 API. As this is a demo, for the sake of the simplicity we will use the admin user. So to get the S3 credentials and endpoint:
+
+```
+[user@bastion ocp]$ noobaa status -n openshift-storage
+...
+#----------------#
+#- S3 Addresses -#
+#----------------#
+
+ExternalDNS : [https://s3-openshift-storage.apps.cluster-xxxxx-yyyyy.example.whatever.com https://a8758f5fa739v43b9bb608984200b8d7-1883911118.eu-central-1.elb.amazonaws.com:443]
+.....
+
+#------------------#
+#- S3 Credentials -#
+#------------------#
+
+AWS_ACCESS_KEY_ID     : XXXXXXXXXXXXXXXXXXXX
+AWS_SECRET_ACCESS_KEY : YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+....
+[user@bastion ocp]$
+```
+
+> You can install the NooBaa operator from [GitHub](https://github.com/noobaa/noobaa-operator#noobaa-operator).
+
+You need to create the **s3cmd** configuration file:
+
+```
+[default]
+access_key = XXXXXXXXXXXXXXXXXXXX
+secret_key = YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+host_base = s3-openshift-storage.apps.cluster-xxxxx-yyyyy.example.whatever.com:443
+host_bucket = s3-openshift-storage.apps.cluster-xxxxx-yyyyy.example.whatever.com:443
+use_https = True
+check_ssl_certificate = False
+check_ssl_hostname = False
+```
+
+So to create the buckets:
+
+```
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://train-cat
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://train-dog
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://validation-cat
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://validation-dog
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://test-cat
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://test-dog
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg mb s3://models
+[user@bastion ocp]$ s3cmd -c s3cfg.cfg ls
+2020-06-23 17:59  s3://models
+2020-06-23 17:59  s3://test-cat
+2020-06-23 17:59  s3://test-dog
+2020-06-23 17:59  s3://train-cat
+2020-06-23 17:59  s3://train-dog
+2020-06-23 17:59  s3://validation-cat
+2020-06-23 17:59  s3://validation-dog
+[user@bastion ocp]$ 
+```
