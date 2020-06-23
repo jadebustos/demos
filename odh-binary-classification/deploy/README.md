@@ -223,3 +223,13 @@ So to create the buckets:
 2020-06-23 17:59  s3://validation-dog
 [user@bastion ocp]$ 
 ```
+
+> You can create them using a script in the next section.
+
+## Upload data to S3
+
+No we need to upload data to S3.
+
+You can use the [upload-data.sh](../source/data/upload-data.sh) script to create the buckets and upload the data to the buckets.
+
+> Remember to configure the [s3cfg.cfg](../source/data/s3cfg.cfg) according to your deployment.

@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-#s3cmd -c s3cfg.cfg mb s3://validation-cat
-#s3cmd -c s3cfg.cfg mb s3://validation-dog
-#s3cmd -c s3cfg.cfg mb s3://train-cat
-#s3cmd -c s3cfg.cfg mb s3://train-dog
-#s3cmd -c s3cfg.cfg mb s3://test-cat
-#s3cmd -c s3cfg.cfg mb s3://test-dog
+s3cmd -c s3cfg.cfg mb s3://validation-cat
+s3cmd -c s3cfg.cfg mb s3://validation-dog
+s3cmd -c s3cfg.cfg mb s3://train-cat
+s3cmd -c s3cfg.cfg mb s3://train-dog
+s3cmd -c s3cfg.cfg mb s3://test-cat
+s3cmd -c s3cfg.cfg mb s3://test-dog
+s3cmd -c s3cfg.cfg mb s3://models
 
 for i in $(seq 1 10)
 do
