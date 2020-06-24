@@ -3,8 +3,8 @@
 - name: create crd
   template:
     src:  create-kafka-topic.yaml.j2
-    path: "{{ deployment_dir }}/create-kafka-topic.yaml"
+    dest: "{{ deployment_dir }}/create-kafka-topic.yaml"
     mode: '0755'
 
 - name: create topic
-  command: "oc apply -f {{ deployment_dir }}/create-kafka-topic.yaml -n binary-classification"
+  command: "oc apply -f {{ deployment_dir }}/create-kafka-topic.yaml -n {{ project_name }}"

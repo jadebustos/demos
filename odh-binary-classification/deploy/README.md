@@ -65,7 +65,7 @@ secret/htpasswd-secret replaced
 [user@bastion ocp]$
 ```
 
-If there is no HTPasswd provided you can create:
+If there is no HTPasswd provided you can create it:
 
 ```
 [user@yourhost ansible]$ ansible-playbook -i inventory create-idp.yaml
@@ -99,7 +99,16 @@ Using project "binary-classification" on server "https://api.cluster-syone-a5ce.
 [user@bastion ocp]$ oc get limits
 NAME                                         CREATED AT
 binary-classification-core-resource-limits   2020-06-22T08:23:22Z
-[user@bastion ocp]$
+[user@bastion ocp]$ oc describe limits binary-classification-core-resource-limits
+Name:       binary-classification-core-resource-limits
+Namespace:  binary-classification
+Type        Resource  Min  Max   Default Request  Default Limit  Max Limit/Request Ratio
+----        --------  ---  ---   ---------------  -------------  -----------------------
+Container   memory    -    6Gi   256Mi            1536Mi         -
+Container   cpu       -    4     50m              500m           -
+Pod         cpu       -    4     -                -              -
+Pod         memory    -    12Gi  -                -              -
+[user@bastion ocp]$ 
 ```
 
 You can use **oc edit limits binary-classification-core-resource-limits** and you can configure something like that:
@@ -136,7 +145,7 @@ spec:
     type: Pod
 ```
 
-After configure:
+After configuration:
 
 ```
 [user@bastion ocp]$ oc describe limits binary-classification-core-resource-limits

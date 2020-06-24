@@ -1,4 +1,3 @@
 ---
 
-project-name: 'binary-classification'
-kafka-topic: 'predict'
+project_name: 'binary-classification'

@@ -1,7 +1,7 @@
 ---
 
 # directory where all required files will be copied
-deployment_dir: '/home/youruser/demo-ocp'
+deployment_dir: '/home/{{ ansible_user }}/demo-odh'
 
 # ocp cluster admin user
 admin_user: 'kubeadmin'

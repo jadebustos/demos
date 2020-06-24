@@ -3,7 +3,9 @@
 - name: create kafka topic
   hosts: bastion
   vars_files:
+    - "group_vars/general.yaml"
     - "group_vars/kafka.yaml"
+    - "group_vars/project.yaml"
   gather_facts: false
   roles:
     - kafka

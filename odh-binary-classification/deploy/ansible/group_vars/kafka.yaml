@@ -1,4 +1,4 @@
 ---
 
 # kafka topic
-kafka-topic: 'predict'
+kafka_topic: 'predict'

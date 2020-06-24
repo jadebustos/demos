@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: {{ kafka-topic }}
+  name: {{ kafka_topic }}
   labels:
     strimzi.io/cluster: odh-message-bus
 spec:
