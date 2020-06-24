@@ -250,3 +250,68 @@ You can use the [upload-data.sh](../source/data/upload-data.sh) script to create
  ```
  [user@yourhost ansible]$ ansible-playbook -i inventory create-topic.yaml
  ```
+
+ ## Create Opendatahub instance
+
+ Log into the project you have just created and create an Opendatahub instance. Once the instance is completely deployed:
+ 
+ + Go to **Network -> Routes** and launch the **jupyterhub**:
+
+ ![jupyter-01-login](imgs/jupyter-01-login.png)
+
++ Login using OpenShift credentials (**data_scientist** user):
+
+ ![jupyter-02-login](imgs/jupyter-02-login.png)
+
++ Spawn a notebook:
+
+![jupyter-03-spawn](imgs/jupyter-03-spawn.png)
+
++ Create a notebook:
+
+![jupyter-04-create](imgs/jupyter-04-create.png)
+
++ Download the two notebooks and the weights for the well trained model. You can download it running the following python code:
+
+![jupyter-05-clean](imgs/jupyter-05-download.png)
+
+```
+import requests
+
+base_url = 'https://raw.githubusercontent.com/jadebustos/demos/master/odh-binary-classification/source/'
+filenames = ['demo-odh.ipynb', 'demo-odh-prod.ipynb', 'well-trained-model.h5']
+
+for item in filenames:
+    url = base_url + item
+    r = requests.get(url, verify=False)
+    with open(item , "wb") as code:
+        code.write(r.content)
+```
+
++ You can remove the notebook. If you go to the **home tab**:
+
+![jupyter-06-delete](imgs/jupyter-06-delete.png)
+
++ Run the **demo-odh.ipynb** and **demo-odh-prod.ipynb** notebooks, look for the following:
+
+```
+# <<< YOUR WHATEVER HERE>>>
+```
+
+and change to fit your environment. You will have to change the S3 and kafka endpoints and S3 credentials as well. Do not forget to save your modifications.
+
+Now you have deployed all the pieces you need for the demo.
+
+You should follow the [demo script](https://github.com/jadebustos/demos/blob/master/odh-binary-classification/doc/for-presenters.md) just to check that all is working properly. Fix the problems and when all works well you should delete all the files and directories that were created in the demo. After deletion:
+
+![jupyter-07-clean-ready](imgs/jupyter-07-clean-ready.png)
+
+Perform a **logout**.
+
+Now you should go to **Workloads -> Pods** and delete the following pod:
+
+![jupyter-08-delete-pod](imgs/jupyter-08-delete-pod.png)
+
+This pod is created when you spawn a notebook the first time you connect. So when you connect again you will have to spawn a new notebook and as persistent volumes are being used the notebooks you have just downloaded will be available.
+
+
