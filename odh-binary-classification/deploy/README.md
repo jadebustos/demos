@@ -12,9 +12,11 @@ To deploy you will need:
 Configure the folowing files to fit your environment:
 
 + **inventory** configure the bastion host ip and the ansible user.
-+ **group_vars/general.yaml**
++ **group_vars/general.yaml** you can change the passwords.
 
 ## OCS deployment
+
+If you have to deploy OCS you can do the following.
 
 Create the OCS namespace:
 
@@ -30,7 +32,7 @@ Deploy OCS as usual.
 
 First you have con create two users. Check if HTPasswd provider is already created in your deployment. 
 
-If it is created then you can create the two user as shown:
+If it is created then you can create the two users as shown:
 
 If HTPasswd provider is already configured you will need to add two users:
 
@@ -65,7 +67,7 @@ secret/htpasswd-secret replaced
 [user@bastion ocp]$
 ```
 
-If there is no HTPasswd provided you can create it:
+If there is no HTPasswd provider you can create it:
 
 ```
 [user@yourhost ansible]$ ansible-playbook -i inventory create-idp.yaml
@@ -237,7 +239,7 @@ So to create the buckets:
 
 ## Upload data to S3
 
-No we need to upload data to S3.
+Now we need to upload data to S3.
 
 You can use the [upload-data.sh](../source/data/upload-data.sh) script to create the buckets and upload the data to the buckets.
 
