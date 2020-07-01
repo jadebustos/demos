@@ -90,7 +90,7 @@ The second cell will evaluate the model we have just trained using the test data
 
 As expected the model is not a good model.
 
-+ **Loading a well trained model** data scientist will keep improving the model until they have a good one. Instead of working hard to get a good model we will load a model which is well trained to simulate the workflow data scientist do. First cell will load a model which is well trained (it could be improved but it is good enough for us).
++ **Loading a well trained model** data scientist will keep improving the model until they have a good one. Instead of working hard to get a good model we will load a model which is well trained to simulate the workflow data scientists do. First cell will load a model which is well trained (it could be improved but it is good enough for us).
 
 Second cell will evaluate this model using the same dataset that was used with the model we have just trained (the bad one):
 
@@ -100,7 +100,7 @@ Second cell will evaluate this model using the same dataset that was used with t
 
 ![predict-topic-empty](imgs/demo-jupyter-predict-topic.png)
 
-You can use the script [download-some-pictures.py](../source/download-some-pictures.py) to download some pictures and you can use the scritp [upload-pictures-to-kafka.sh](../source/upload-pictures-to-kafka.sh) to upload the data to kafka topic:
+You can use the script [download-some-pictures.py](../source/download-some-pictures.py) to download some pictures and you can use the script [upload-pictures-to-kafka.sh](../source/upload-pictures-to-kafka.sh) to upload the data to kafka topic:
 
 ![upload-data-kafka](imgs/demo-jupyter-upload-kafka.png)
 
@@ -117,3 +117,29 @@ Now you can execute the cell to download the data from the kafka topic and make 
 ![dogs-predicted](imgs/demo-jupyter-dogs-predicted.png)
 
 + **Upload the model to Red Hat Ceph Storage** although the model does not predict well some cats/dogs (we have used some cats/dogs that are not very common as Portuguese Hound or Sphynx Cat) we can consider the model as good enough. So we will upload the model (model weights) to a bucket in Red Hat Ceph Storage. Executing this cell the model will be uploaded to a bucket to be used by other applications.
+
+## Using the trained model in another application
+
+Once the model is validated we want the model to be used by other applications. The model (weights) were uploaded to Red Hat Ceph Storage so the applications which need the model can get it from there.
+
+Launch the **demo-odh-prod.ipynb**:
+
+![demo-prod](imgs/demo-production.png)
+
++ **Some notebook configuration** disables scrolling in output cells.
+
++ **Preparing the environment** the first cell install python modules and creates directories to store data. The second cell will download the model from Red Hat Ceph Storage. You can browse the **data/model** dir before executing the cell and after executing to show that the model (weights) file was downloaded. A class implementing the Convolutional Neural Network is also defined:
+
+![demo-prod-ceph](imgs/demo-production-download-model.png)
+
++ **Using the model** a Convolutional Neural Network is created and the previously downloaded model (weights) will be loaded. Data will be downloaded from the kafka topic to **data/production** directory. Browse the directory before and after executing the cell to show that data was downloaded. Predictions are done using the model:
+
+![demo-prod-kafka](imgs/demo-production-kafka.png)
+
+ **Predicted Cats** executing this cell all the cats predicted using the model and the data sent to kafka will be shown:
+
+![cats-predicted](imgs/demo-jupyter-cats-predicted.png)
+
++ **Predicted Dogs** executing this cell all the dogs predicted using the model and the data sent to kafka will be shown:
+
+![dogs-predicted](imgs/demo-jupyter-dogs-predicted.png)
