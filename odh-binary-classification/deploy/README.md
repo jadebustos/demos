@@ -269,6 +269,8 @@ You can use the [upload-data.sh](../source/data/upload-data.sh) script to create
 
 ![jupyter-03-spawn](imgs/jupyter-03-spawn.png)
 
+> You can also configure the AWS crendentials here and use them in the python code. If you want to do that you will have to modify the python code and access the variables as **os.environ['VARIABLE_NAME']**.
+
 + Create a notebook:
 
 ![jupyter-04-create](imgs/jupyter-04-create.png)
